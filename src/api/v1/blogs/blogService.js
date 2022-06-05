@@ -1,4 +1,4 @@
-const { default: db } = require('../../../db');
+const db = require('../../../db');
 
 module.exports = {
   createBlog: (userId, slug, title, content) =>

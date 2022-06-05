@@ -44,5 +44,7 @@ exports.signIn = async (req, res, next) => {
 exports.getAuthenticatedUser = (req, res) =>
   res.json({
     ok: true,
-    user: req.user,
+    result: {
+      user: req.user,
+    },
   });
