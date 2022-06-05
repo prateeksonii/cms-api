@@ -13,4 +13,19 @@ module.exports = {
     db.user.findFirst({
       where: { email },
     }),
+  findAllReaders: () =>
+    db.user.findMany({
+      where: {
+        role: 'READER',
+      },
+    }),
+  makeAdmin: (userId) =>
+    db.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        role: 'ADMIN',
+      },
+    }),
 };

@@ -27,3 +27,30 @@ exports.createUser = async (req, res, next) => {
     return next(err);
   }
 };
+
+exports.getAllReaders = async (req, res, next) => {
+  try {
+    const users = await userService.findAllReaders();
+
+    return res.json({
+      ok: true,
+      result: {
+        users,
+      },
+    });
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.makeAdmin = async (req, res, next) => {
+  try {
+    await userService.makeAdmin(+req.params.id);
+
+    return res.json({
+      ok: true,
+    });
+  } catch (err) {
+    return next(err);
+  }
+};
